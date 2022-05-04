@@ -1,0 +1,88 @@
+{% load static %}
+<html>
+<head>
+<title>Attendance Page</title>
+    <link rel="stylesheet" href='{% static "CSS/index.css" %}'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    
+    <div class=nev>
+        <li>
+            <img src="{% static 'img/logo.png' %}" width=200px><br>
+            <ul><a href="/">Home</a></ul>
+            <ul><a href="http://127.0.0.1:8000/attendance/">Attendance</a></ul>
+            <ul><a href="http://127.0.0.1:8000/search/">student search</a></ul>
+            <ul><a href="http://127.0.0.1:8000/contact/">contact us</a></ul>
+        </li>
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class='searchbox'>
+            <h3>STUDENT SEARCH</h3>
+            <span class=subsearchbox>
+                <input type="month" id="start" name="start" min="2022-04" value="{{cdt}}">
+                <input class="sbtn" type="submit">
+            </span>
+        </div>
+
+        <div class=headdata>
+            <h1>CIST</h1><br>
+            <h2>{{branch}}</h2>
+            <h2>{{cdate}}</h2><br>
+
+        </div>
+
+
+        <table>
+              <tr>
+                  {% for i in headtable %}
+                    <th>{{i}}</th>
+                  {% endfor %}
+              </tr>
+
+            {% for i in palis %}
+              <tr>
+                  <td>{{i.0}}</td>
+                  <td>{{i.1}}</td>
+                  <td>{{i.2}}</td>
+                  <td>{{i.3}}</td>
+                  <td>{{i.4}}</td>
+                  <td>{{i.5}}</td>
+                  <td>{{i.6}}</td>
+                  <td>{{i.7}}</td>
+                  <td>{{i.8}}</td>
+                  <td>{{i.9}}</td>
+                  <td>{{i.10}}</td>
+                  <td>{{i.11}}</td>
+                  <td>{{i.12}}</td>
+                  <td>{{i.13}}</td>
+                  <td>{{i.14}}</td>
+                  <td>{{i.15}}</td>
+                  <td>{{i.16}}</td>
+                  <td>{{i.17}}</td>
+                  <td>{{i.18}}</td>
+                  <td>{{i.19}}</td>
+                  <td>{{i.20}}</td>
+                  <td>{{i.21}}</td>
+                  <td>{{i.22}}</td>
+                  <td>{{i.23}}</td>
+                  <td>{{i.24}}</td>
+                  <td>{{i.25}}</td>
+                  <td>{{i.26}}</td>
+                  <td>{{i.27}}</td>
+                  <td>{{i.28}}</td>
+                  <td>{{i.29}}</td>
+                  <td>{{i.30}}</td>
+                  <td>{{i.31}}</td>
+                  <td>{{i.32}}</td>
+                  <td>{{i.33}}</td>
+              </tr>
+            {% endfor %}
+            </table>
+    </form>
+    <a href="/download/"><button class="btn1"><i class="fa fa-download"></i> Download</button></a>
+</body>
+
+</html>

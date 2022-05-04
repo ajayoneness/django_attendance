@@ -1,0 +1,69 @@
+{% load static %}
+<html>
+<head>
+<title>Attendance Page</title>
+    <link rel="stylesheet" href='{% static "CSS/index.css" %}'>
+</head>
+<body>
+    
+    <div class= nev>
+        <li>
+            <img src="{% static 'img/logo.png' %}" width=200px><br>
+            <ul><a href="/">Home</a></ul>
+            <ul><a href="http://127.0.0.1:8000/attendance/">Attendance</a></ul>
+            <ul><a href="http://127.0.0.1:8000/search/">student Search</a></ul>
+            <ul><a href="contact/">contact us</a></ul>
+        </li>
+    </div>
+    <form method="post" action="/submit">
+    {% csrf_token %}
+        <div class=box>
+            <h3>Teacher Name : {{teacher}}</h3>
+            <h5>Date : {{cdate}}</h5>
+            <h5>Branch : {{branch}}</h5>
+            <h5>Semester : {{sem}}</h5>
+            <h5>Subject : {{sub}}</h5>
+
+        </div>
+        
+        <div class=table>
+            
+            <table>
+              <tr>
+                <th>SN</th>
+                <th>Students Name</th>
+                <th>Enrollment No.</th>
+                <th>Present/Absent</th>
+              </tr>
+
+                {% for s in stu %}
+              <tr>
+                  {% if s.enrollment_no != '' %}
+                <td>{{ forloop.counter }}</td>
+                <td>{{ s.name }}</td>
+                <td>{{ s.enrollment_no }}</td>
+
+                <td>
+                  <label class="switch">
+                    <input type="checkbox" name="checkbox" value="{{s.enrollment_no}}">
+                  <span class="slider round"></span>
+                </label>
+                </td>
+                  {% endif %}
+            </tr>
+                {% endfor %}
+
+            </table>
+            
+        
+        </div>
+        
+        <input class="btn" type="submit">
+        
+    </form>
+
+   
+    
+</body>
+
+</html>

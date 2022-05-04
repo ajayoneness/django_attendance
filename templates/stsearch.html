@@ -1,0 +1,79 @@
+{% load static %}
+<html>
+<head>
+<title>Attendance Page</title>
+    <link rel="stylesheet" href='{% static "CSS/index.css" %}'>
+</head>
+<body>
+    
+    <div class=nev>
+        <li>
+            <img src="{% static 'img/logo.png' %}" width=200px><br>
+            <ul><a href="/">Home</a></ul>
+            <ul><a href="http://127.0.0.1:8000/attendance/">Attendance</a></ul>
+            <ul><a href="http://127.0.0.1:8000/search/">student search</a></ul>
+            <ul><a href="http://127.0.0.1:8000/contact/">contact us</a></ul>
+        </li>
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class='searchbox'>
+            <h3>STUDENT SEARCH</h3>
+            <span class=subsearchbox>
+                <input class=bsearch type=search name="search" placeholder="0502CS191004">
+                <input type="month" id="start" name="start" min="2021-04" value="2022-04">
+                <input class="sbtn" type="submit">
+            </span>
+        </div>
+
+        <div class=headdata>
+            <h1>{{name}}</h1><br>
+            <h2>{{branch}}</h2>
+            <h2>{{cdate}}</h2><br>
+
+        </div>
+
+
+        <table>
+              <tr>
+                  <th>SN</th>
+                <th>Date</th>
+                {% for i in teacher %}
+                  {% if i.sem == '6th' %}
+                <th>{{i.subject}}</th>
+                  {% endif %}
+                {% endfor %}
+                <th>total</th>
+              </tr>
+
+
+
+            {% for i in palis %}
+              <tr>
+                  <td>{{forloop.counter}}</td>
+                  <td>{{i.0}}</td>
+                  <td>{{i.1}}</td>
+                  <td>{{i.2}}</td>
+                  <td>{{i.3}}</td>
+                  <td>{{i.4}}</td>
+                  <td>{{i.5}}</td>
+                  <td>{{i.6}}</td>
+                  <td>{{i.7}}</td>
+                  <td>{{i.8}}</td>
+              </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="9">total</td>
+                <td>{{tatt}}</td>
+            </tr>
+
+
+            </table>
+
+
+    </form>
+
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+{% load static %}
+<html>
+<head>
+<title>Attendance Page</title>
+    <link rel="stylesheet" href="{% static 'CSS/index.css' %}">
+</head>
+<body>
+    
+    <div class= nev>
+        <li>
+            <img src="{% static 'img/logo.png' %}" width=200px><br>
+            <ul><a href="/">Home</a></ul>
+            <ul><a href="http://127.0.0.1:8000/attendance/">Attendance</a></ul>
+            <ul><a href="http://127.0.0.1:8000/search/">student search</a></ul>
+            <ul><a href="http://127.0.0.1:8000/contact/">contact us</a></ul>
+        </li>
+    </div>
+    <form>
+        {% csrf_token %}
+        <div class=headdata>
+            <h1>Teacher Name : {{teacher}}</h1><br>
+            <h2>Subject : {{subject}}</h2><br>
+            <h2>date  : {{date}}</h2><br><br>
+            <h4>Today's Present students</h4>
+        </div>
+        
+            <table>
+              <tr>
+                <th>SN</th>
+                <th>Students Name</th>
+                <th>Enrollment No.</th>
+                <th>Semester</th>
+                <th>Branch</th>
+              </tr>
+                {% for i,j in dic.items %}
+              <tr>
+                <td>{{j.0}}</td>
+                <td>{{j.6}}</td>
+                <td>{{j.2}}</td>
+                <td>{{j.4}}</td>
+                <td>{{j.7}}</td>
+              </tr>
+
+                {% endfor %}
+
+            </table>
+        
+        
+    </form>
+    
+   
+    
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+{% load static %}
+<html>
+<head>
+<title>Attendance Page</title>
+    <link rel="stylesheet" href="{% static 'CSS/index.css' %}">
+</head>
+<body>
+    
+    <div class= nev>
+        <li>
+            <img src="{% static 'img/logo.png' %}" width=200px><br>
+            <ul><a href="/">Home</a></ul>
+            <ul><a href="http://127.0.0.1:8000/attendance/">Attendance</a></ul>
+            <ul><a href="http://127.0.0.1:8000/search/">student Search</a></ul>
+            <ul><a href="http://127.0.0.1:8000/contact/">contact us</a></ul>
+        </li>
+    </div>
+    <form action='/student/' method="post">
+        {% csrf_token %}
+        <div class=box>
+
+                <select name="branch" id="branch">
+                  <option value="">--Branch--</option>
+                    {% for b in branch %}
+                    <option value="{{b}}">{{b}}</option>
+                    {% endfor %}
+                </select>
+
+                <select name="sem" id="sem">
+                  <option value="">--semester--</option>
+                    {% for s in sem %}
+                    <option value="{{s}}">{{s}}</option>
+                    {% endfor %}
+                </select>
+
+                <select name="teacher" id="teacher">
+                  <option value="">--Select Teacher--</option>
+                    {% for tec in teacher %}
+                    <option value="{{tec.t_name}}">{{tec.t_name}}</option>
+                    {% endfor %}
+                </select>
+
+                <select name="subject" id="subject">
+                  <option value="">--Select Subject--</option>
+                    {% for tec in teacher %}
+                    <option value="{{tec.subject}}">{{tec.subject}}</option>
+                    {% endfor %}
+                </select>
+
+        </div>
+        
+        <input class="btn" type="submit">
+        
+    </form>
+    
+   
+    
+</body>
+
+</html>
